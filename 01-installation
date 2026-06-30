@@ -1,0 +1,15 @@
+step 1: check if python available
+   -In terminal :  
+      python --version
+   -if available move to step 2. 
+   -if not install python.
+
+step 2: set virtual environment
+   -IN Terminal:
+    python -m venv venv
+   -To activate virtual environment:
+     venv\Scripts\activate
+   -you can see (venv) at first in terminal
+ 
+step 3: install fastapi and uvicorn
+   pip install fastapi uvicorn
