@@ -3,8 +3,13 @@ app = FastAPI()
 
 
 @app.post("/users")
-def create_user(name: str , age: int):
+# def create_user(name: str , age: int):
+#     return{
+#         "user": name,
+#         "age": age
+#     }
+
+def create_user(user: dict):
     return{
-        "user": name,
-        "age": age
+        "user": user
     }
