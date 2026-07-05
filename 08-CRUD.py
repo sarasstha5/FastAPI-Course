@@ -38,6 +38,7 @@ def get_todo(todo_id:int):
         "message":"todo not found"
     }
 
+#updating todo using Put API
 @app.put("/todos/{todo_id}")
 def update_todo(todo_id:int,updated_todo:Todo):
     for index,t in enumerate(Todos_list):
@@ -46,6 +47,19 @@ def update_todo(todo_id:int,updated_todo:Todo):
             return{
                 "message":"todo updated",
                 "data": updated_todo
+            }
+    return{
+        "message":"todo not found"
+    }
+#deleting specific todo
+@app.delete("/todos/{todo_id}")
+def del_todo(todo_id:int):
+    for index, d in enumerate(Todos_list):
+        if d.Id == todo_id:
+            Todos_list.pop(index)
+            return{
+                "message":"new todo_list",
+                "data":Todos_list
             }
     return{
         "message":"todo not found"
