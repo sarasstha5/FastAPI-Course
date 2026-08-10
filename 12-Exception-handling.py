@@ -1,4 +1,4 @@
-from fastapi import FastAPI,Request, status
+from fastapi import FastAPI,Request, status,HTTPException
 from fastapi.responses import JSONResponse
 
 app = FastAPI()
@@ -40,3 +40,12 @@ def global_exception():
     return{
         "x": x
     }
+
+#Basic error handling with status codes
+@app.get("/user/{user_id}")
+def get_user(user_id: int):
+    if user_id != 1:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="User not found")
+    return {"user_id": user_id}
