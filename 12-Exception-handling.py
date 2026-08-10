@@ -25,3 +25,18 @@ def get_user(item_id: int):
     return{
         "item_id": item_id
     }
+
+#global exception handling
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    return JSONResponse(
+        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        content={"message": "An internal server error occurred"}
+    )
+
+@app.get("/test")
+def global_exception():
+    x = 1 / 0  # This will raise a ZeroDivisionError, which will be caught by the global exception handler
+    return{
+        "x": x
+    }
