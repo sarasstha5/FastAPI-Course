@@ -34,6 +34,7 @@ def about(user = Depends(get_current_user)):
     }
 
 #auth basic
+#header comes from the request header of the client. when client sends a request to the server, it can include a header with a token. The server can then verify the token and return a response based on whether the token is valid or not.
 def verify_token(token:str=Header(None)):
     if token!="saras":
         raise HTTPException(
