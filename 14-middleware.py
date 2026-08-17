@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException, status, middleware,Request
+import time
 
 app = FastAPI()
 #middleware is a function that runs when client send request and request first goes to middle ware which is like checkpoint not actual endpoint which helps in verifying the request and goes to the actual endpoint function.
@@ -21,12 +22,20 @@ def get_user():
         "message":"Hello user"
     }
 
-#Logging requests
+# #Logging requests
+# @app.middleware("http")
+# async def log_request(request: Request, call_next):
+#     print(request.method, request.url)
+
+#     response = await call_next(request)
+
+#     return response
+
+#processing time
 @app.middleware("http")
-async def log_request(request: Request, call_next):
-    print(request.method, request.url)
-
+async def processing_time(request: Request, call_next):
+    start = time.time()
     response = await call_next(request)
-
+    end = time.time()
+    print(f"Processing time: {end - start}")
     return response
-
