@@ -23,7 +23,7 @@ Base.metadata.create_all(bind=engine) # Create the "user" table in the database
 def get_db():
     db = sessionlocal()                                   # Create a new database session
     try:
-        yield db         
+        yield db                                          #yield give the database session (db) to whoever requested it, while keeping the function paused.
     finally:
         db.close()
 
