@@ -61,3 +61,21 @@ def get_todo(todo_id:int, db:Session = Depends(get_db)):
         "message": "Todo retrieved successfully",
         "todo": todo
     }
+
+#update data in database
+@app.put("/todos/{todo_id}")
+def update_todo(todo_id:int, title:str,description:str, db:Session = Depends(get_db)):
+    todo = db.query(Todo).filter(todo_id == Todo.id).first()
+    if not todo:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Todo not found"
+        )
+    todo.title = title
+    todo.description = description
+    db.commit()
+    db.refresh(todo)
+    return{
+        "message":"todo updated",
+        "todo": todo
+    }
