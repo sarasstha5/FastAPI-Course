@@ -79,3 +79,21 @@ def update_todo(todo_id:int, title:str,description:str, db:Session = Depends(get
         "message":"todo updated",
         "todo": todo
     }
+
+#delete data from database
+@app.delete("/todos/{todo_id}")
+def todo_delete(todo_id:int, db:Session= Depends(get_db)):
+    todo = db.query(Todo).filter(todo_id == Todo.id).first()
+    if todo is None:
+        raise HTTPException(
+            status_code = 404,
+            detail = "todo not found"
+        )
+
+    db.delete(todo)
+    db.commit()
+    return {
+        "message": "todo deleted successfully",
+        "todo": todo
+
+    }
