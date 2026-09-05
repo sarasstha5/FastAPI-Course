@@ -47,7 +47,7 @@ def verify(token:str= Header(None)):
             detail = "Invalid token"
         )
         
-
+#secure endpoint that requires authentication
 @app.get("/secure")
 def secure(user = Depends(verify)):
     return{
