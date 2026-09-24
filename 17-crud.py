@@ -6,7 +6,7 @@ app = FastAPI()
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+SessionLocal = sessionmaker( bind=engine)
 Base = declarative_base()
 
 #create table in database named "todos"
