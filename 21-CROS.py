@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 #url = http://localhost:1532
-origin = ["url of the frontend"]
+origin = ["url of the frontend"]    #never put it in direct code rather in Environment variable
 
 app.add_middleware(
     CORSMiddleware,
