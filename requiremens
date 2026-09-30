@@ -1,0 +1,7 @@
+SQlalchemy
+python-dotenv
+uvicorn
+fastapi
+python-jose
+python-multipart
+ httpx2 - for testing 
