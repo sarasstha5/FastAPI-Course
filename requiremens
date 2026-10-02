@@ -1,9 +1,12 @@
-SQlalchemy
-python-dotenv
-uvicorn
 fastapi
+uvicorn
+SQLAlchemy
+python-dotenv
 python-jose
 python-multipart
- httpx2 - for testing 
- requests - for third party api integration
- BeautifulSoup4 - for web crawling
+requests          - web crawling
+beautifulsoup4    - html extaract
+passlib[bcrypt]
+httpx2
+pytest
+slowapi
