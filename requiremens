@@ -6,3 +6,4 @@ python-jose
 python-multipart
  httpx2 - for testing 
  requests - for third party api integration
+ BeautifulSoup4 - for web crawling
